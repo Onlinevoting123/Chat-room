@@ -10,7 +10,7 @@ const server=http.createServer(app);
 
 const io=new Server(server,{
     cors:{
-        origin:"https://chat-room-join.vercel.app/",
+        origin:"https://chat-room-join.vercel.app",
         methods:["GET","POST"],
     }
 })
@@ -33,6 +33,6 @@ io.on("connection",(socket)=>{
     })
 })
 
-server.listen(3001 || process.env.PORT ,()=>{
+server.listen(3001,()=>{
     console.log("server running");
 })
