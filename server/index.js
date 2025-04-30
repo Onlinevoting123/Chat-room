@@ -4,12 +4,12 @@ const http=require("http");
 const cors=require("cors");
 const {Server} = require('socket.io');
 
+const server=http.createServer(app);
 app.use(cors())
+
 app.use("/",(req,res)=>{
     res.send("server is running");
 });
-
-const server=http.createServer(app);
 
 const io=new Server(server,{
     cors:{
@@ -35,7 +35,7 @@ io.on("connection",(socket)=>{
         console.log("user disconnected", socket.id)
     })
 })
-
-server.listen(3001,()=>{
+const PORT = process.env.PORT || 3001;
+server.listen(PORT,()=>{
     console.log("server running");
 })
