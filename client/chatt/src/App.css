@@ -1,11 +1,25 @@
+h1{
+  top:170px;
+  left: 35px;
+  position:absolute;
+  color: #fff;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .App {
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  color: #212121;
+  color: #ffffff;
   font-family: "Open Sans", sans-serif;
-  display: grid;
-  place-items: center;
+  top:504px;
+  right:580px;
+  position:absolute;
+  display: flex;
+}
+
+video{
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
 }
 body {
   margin: 0%;
@@ -20,39 +34,55 @@ body {
 }
 
 .joinChatContainer h3 {
-  font-size: 2.5rem;
+  font-size: 4.0rem;
   margin-bottom: 1rem;
 }
 .joinChatContainer input {
-  width: 210px;
+  width: 310px;
   height: 40px;
   margin: 7px;
-  border: 2px solid #43a047;
-  border-radius: 5px;
+  border: 2px solid #1e2098;
+  border-radius: 50px;
   padding: 5px;
   font-size: 16px;
+  font-weight: bolder;
+  text-align: center;
 }
 
-.joinChatContainer button {
-  width: 225px;
-  height: 50px;
-  margin: 7px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  background: #43a047;
-  color: #fff;
-  cursor: pointer;
+.but {
+    left:80px;
+    position: relative;
+    width:10rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right,rgb(2, 9, 70),rgb(255, 255, 255),#070953,#ffffff,#02104b);
+    background-size: 200%;
+    animation: animationGradient 2.5s linear infinite;
 }
-
-.joinChatContainer button:hover {
-  background: #2e7d32;
+@keyframes animationGradient {
+    to{
+    background-position:200%;
+    }
 }
-
+.but button {
+    color: #ffffff;
+    position: absolute;
+    inset: 3px 3px 3px 3px;;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-weight: bolder;
+}
 .chat-window {
-  width: 300px;
-  height: 420px;
+  width: 719px;
+  height: 477px;
+  top:-11px;
+  right:-197px;
+  position:absolute;
 }
 
 .chat-window p {
@@ -60,24 +90,22 @@ body {
 }
 .chat-window .chat-header {
   height: 45px;
-  border-radius: 6px;
-  background: #263238;
+  border-radius: 6px 6px 0px 0px;
   position: relative;
   cursor: pointer;
+  background: #160b80;
 }
-.chat-window .chat-header p {
+.chat-window .chat-header h4 {
   display: block;
   padding: 0 1em 0 2em;
   color: #fff;
-  font-weight: 700;
+  font-weight: bolder;
   line-height: 45px;
+  margin:4;
 }
 
 .chat-window .chat-body {
   height: calc(450px - (45px + 70px));
-  border: 1px solid #263238;
-  background: #fff;
-
   position: relative;
 }
 .chat-window .chat-body .message-container {
@@ -91,17 +119,17 @@ body {
   display: none;
 }
 .chat-window .chat-body .message {
-  height: auto;
   padding: 10px;
   display: flex;
 }
-
-.chat-window .chat-body .message .message-content {
+.chat-window .chat-body .message .message-content :not(p){
   width: auto;
   height: auto;
-  min-height: 40px;
-  max-width: 120px;
-  background-color: #43a047;
+  min-height: 4px;
+  max-width: 260px;
+}
+
+.chat-window .chat-body .message .message-content {
   border-radius: 5px;
   color: white;
   display: flex;
@@ -134,7 +162,13 @@ body {
 
 #you .message-content {
   justify-content: flex-end;
-  background-color: cornflowerblue;
+  background-color: rgb(10, 34, 100);
+}
+#you .message-content h4{
+  font-weight: bolder;
+}
+#you .message-content p{
+  font-size: x-small;
 }
 
 #you .message-meta {
@@ -145,9 +179,15 @@ body {
 #other {
   justify-content: flex-start;
 }
-
 #other .message-content {
   justify-content: flex-start;
+  background-color: #070953;
+}
+#other .message-content h4{
+  font-weight: bolder;
+}
+#other .message-content p{
+  font-size: x-small;
 }
 
 #other .message-meta {
@@ -157,7 +197,6 @@ body {
 
 .message-meta #author {
   margin-left: 10px;
-  font-weight: bold;
 }
 
 .chat-window .chat-body .message .message-meta {
@@ -167,9 +206,9 @@ body {
 
 .chat-window .chat-footer {
   height: 40px;
-  border: 1px solid #263238;
   border-top: none;
   display: flex;
+  border-radius: 0px 0px 6px 6px;
 }
 
 .chat-window .chat-footer input {
@@ -178,9 +217,9 @@ body {
   border: 0;
   padding: 0 0.7em;
   font-size: 1em;
-  border-right: 1px dotted #607d8b;
-
+  background: #3d3d3d;
   outline: none;
+  color: #ffffff;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -189,16 +228,15 @@ body {
   display: grid;
   place-items: center;
   cursor: pointer;
-  flex: 15%;
   height: 100%;
-  background: transparent;
+  background:#575353;
   outline: none;
   font-size: 25px;
-  color: lightgray;
+  color: rgb(255, 255, 255);
 }
 
 .chat-window .chat-footer button:hover {
-  color: #43a047;
+  background: #1a378e;
 }
 .hide {
   opacity: 0 !important;
