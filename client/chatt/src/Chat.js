@@ -4,6 +4,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 function Chat({socket,username,room}) {
     const [currentmessage,setCurrentmessage]=useState("");
     const [messagelist,setMessagelist]=useState([]);
+    const [akn, setAkn] = useState("");
 
     const sendMessage= async ()=>{
         if (currentmessage !==""){
@@ -20,6 +21,12 @@ function Chat({socket,username,room}) {
         }
     }
 
+      useEffect(() => {
+          socket.off("receiveakn").on("receiveakn", (data) => {
+          setAkn(data);
+          });
+        }, [socket]);
+
     useEffect(() => {
         socket.off("receive_message").on("receive_message", (data) => {
         setMessagelist((list) => [...list, data]);
@@ -27,7 +34,8 @@ function Chat({socket,username,room}) {
       }, [socket]);
     return (
         <div className="chat-window">
-            <div className="chat-header"><p>Live Chat:{room}</p></div>
+            <div className="chat-header"><h4>Live Chat:&nbsp;&nbsp;{room}</h4>
+            </div>
             <div className="chat-body">
                 <div className='container'>
                     <div className='left eyes'></div>
@@ -41,11 +49,11 @@ function Chat({socket,username,room}) {
                     <div className='message' id={username===messagecontent.author?"you":"other"}>
                         <div>
                             <div className='message-content'>
-                                <p>{messagecontent.message}</p>
+                                <h4>{messagecontent.message}&nbsp;&nbsp;&nbsp;</h4>
+                                <p id='time'>{messagecontent.time}</p>
                             </div>
                             <div className='message-meta'>
-                                <p id='time'>{messagecontent.time}</p>
-                                <p id='author'>{messagecontent.author}</p>
+                                <p id='author'>{username===messagecontent.author?"":`~${messagecontent.author}`}</p>
                             </div>
                         </div>
                     </div></>);
