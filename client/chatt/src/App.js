@@ -5,7 +5,7 @@ import Chat from "./Chat";
 import hero from "./hero.mp4";
 import logo from "./log.png";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://chat-room-production-990c.up.railway.app/");
 
 function App() {
   const [username, setUsername] = useState("");
