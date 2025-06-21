@@ -5,7 +5,7 @@ import Chat from "./Chat";
 import hero from "./hero.mp4";
 import logo from "./log.png";
 
-const socket = io.connect("https://chat-room-production-990c.up.railway.app/");
+const socket = io.connect("https://chat-room-1oj4.vercel.app/");
 
 function App() {
   const [username, setUsername] = useState("");
